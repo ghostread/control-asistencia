@@ -333,7 +333,7 @@ class AsistenciaController extends Controller
         //     ->select('users.nombre','users.apellido',
         //     'materias.id as IDmateria','materias.nombre as materia',
             
-        //     'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.id) as totalRegistro') 
+        //     'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.id) as totalregistro') 
         //     )
         //     ->groupBy('users.nombre','users.apellido','materias.id','materias.nombre',
         //     'unidadacademica.facultad','unidadacademica.nombre')
@@ -349,7 +349,7 @@ class AsistenciaController extends Controller
             ->select('users.nombre','users.apellido',
             'materias.id as IDmateria','materias.nombre as materia',
             
-            'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.id) as totalRegistro'),DB::raw('count(asistencias.id)*2 as cargaHoraria')
+            'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.id) as totalregistro'),DB::raw('count(asistencias.id)*2 as cargaHoraria')
             )
             ->whereBetween('asistencias.fecha', [$fechaini, $fechafin])
             ->groupBy('users.nombre','users.apellido','materias.id','materias.nombre',
@@ -364,7 +364,7 @@ class AsistenciaController extends Controller
             ->select('users.nombre','users.apellido',
             'materias.id as IDmateria','materias.nombre as materia',
             
-            'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.usuario) as totalRegistro'),DB::raw('count(asistencias.usuario)*2 as cargaHoraria')
+            'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.usuario) as totalregistro'),DB::raw('count(asistencias.usuario)*2 as cargahoraria')
             )
             // ->whereBetween('asistencias.fecha', [$fechaini, $fechafin])
             ->groupBy('users.nombre','users.apellido','materias.id','materias.nombre',

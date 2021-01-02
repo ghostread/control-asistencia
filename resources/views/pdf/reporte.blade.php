@@ -128,8 +128,8 @@
                     <td>{{$asistencia->apellido}}</td>
                     {{-- <td>{{$asistencia->IDmateria}}</td> --}}
                     <td>{{$asistencia->materia}}</td>
-                    <td>{{$asistencia->totalRegistro}}</td>
-                    <td>{{$asistencia->cargaHoraria}} hrs.</td>
+                    <td>{{$asistencia->totalregistro}}</td>
+                    <td>{{$asistencia->cargahoraria}} hrs.</td>
                     {{-- <td>{{$asistencia->dia}}</td>
                     <td>{{$asistencia->grupo}}</td>
                     <td>{{$asistencia->idmateria}}</td>
