@@ -9,6 +9,10 @@
               <label class="col-auto">Carrera: </label>                
               <p class="col-auto">{{$horarios->first()->unidad}}</p>
            </div>
+
+           <div class="row">
+            <p>{{ \Carbon\Carbon::now()->toDateString() }}</p>
+           </div>
         </div>
     
         <div class="col-md-6">

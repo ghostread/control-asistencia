@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Carbon\Carbon;
 class AsistenciaController extends Controller
 {
     /**
@@ -212,7 +213,26 @@ class AsistenciaController extends Controller
      */
     public function store(Request $request)
     {
+        // $fechaejemplo=date('d-m-Y', strtotime($request->fecha));
+        // $created = new Carbon($price->created_at);
+        // $now = Carbon::now();
+        // $difference = ($created->diff($now)->days < 1)
+        // ? 'today'
+        //      : $created->diffForHumans($now);
+        // $date=Carbon::parse(Carbon::now());
+        // $DeferenceInDays = Carbon::parse(Carbon::now())->diffInDays($request->fecha);
 
+                // $date = Carbon::now(); // or $date = new Carbon();
+        // $date->setISODate(2021,42); // 2016-10-17 23:59:59.000000
+        
+        // $fechaejemplo=$request->fecha->diff($request->fechaReposicion);
+
+        // $this->validate($request, [
+        //     'herramientas' => 'required',
+        //     'contenido'=>'required',
+        //     // 'body' => 'required',
+        // ]);
+        // FECHA: {{date('d-m-Y', strtotime($index->fecha_atraso)) }} (12-06-2018)
 
         
         $he=($request->get('chek'));
@@ -264,11 +284,21 @@ class AsistenciaController extends Controller
             //     $fileNameToStore="noimagen.jpg";
             // }
             
-            
+            // return $now;
 
-            $asistencia->save();
+            $inicio=Carbon::parse(Carbon::now())->startOfWeek()->toDateString(); 
+        $fin=Carbon::parse(Carbon::now())->endOfWeek()->toDateString(); 
+        if(($request->fecha>=$inicio)&&($request->fecha<=$fin)){
+             $asistencia->save();
+            return Redirect::to("asistencias");
+        }else{
+           $mensaje="La fecha de la clase selecionada No se puede registrar porque no es de esta semana";
+            return redirect()->route('asistencias.create',array('materia'=>$request->horaId,'mensaje'=>$mensaje));
+        }
+            // $asistencia->save();
             // return Redirect::to("asistencias"); 
-            return redirect()->route('asistencias.index');
+            // return redirect()->route('asistencias.index');
+            
     
         // return $asistencia;
     }

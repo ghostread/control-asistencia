@@ -22,6 +22,7 @@
            {{csrf_field()}}
             {{-- <p hidden id="horaId" name="horaId">{{$herramientas->first()->id}}</p> --}}
             <input hidden type="input" id="horaId" name="horaId" class="form-control" value="{{$horarios->first()->id}}">
+            
 
             <input hidden type="input" id="usuario" name="usuario" class="form-control" value="{{Auth::user()->id}}">
             
@@ -107,15 +108,30 @@
                     <div class="form-group mt-3">
                       <div class="form">
                               <a href="{{url('asistencias')}}"><button type="button"  class="btn btn-danger "><i class="fa fa-times fa-1x"></i> Canselar</button></a>
-                              <button type="submit" class="btn btn-primary"><i class="fa fa-save fa-1x"></i> Registrar Asistencia <input type="button" style=" background-color: Transparent;
-                                background-repeat:no-repeat;
-                                border: none;
-                                cursor:pointer;
-                                overflow: hidden;
-                                outline:none;" value="HOlaf" data-toggle="modal" data-target="#abrirmodal"/></button> 
+                              <button type="submit" class="btn btn-primary"><i class="fa fa-save fa-1x"></i> Registrar Asistencia </button> 
                               
                       </div>
                     </div>
+                    @if(Request::get('mensaje'))
+                    <div class="alert alert-danger p-0">
+                      <ul>
+                              <li>{{ Request::get('mensaje') }}</li>
+                      </ul>
+                  </div>
+                    @endif
+                    
+                          @if ($errors->any())
+                            <div class="alert alert-danger p-0">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @else
+                            
+                          @endif
+                    
 
                     {{-- modal alert --}}
                     <div class="modal" tabindex="-1" role="dialog" id="abrirmodal" name="abrirmodal">
