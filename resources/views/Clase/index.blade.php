@@ -1,6 +1,6 @@
 @extends('principal')
 @section('contenido')
-<main class="main">
+{{-- <main class="main"> --}}
             <!-- Breadcrumb -->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="/">Sistema de control de asistencia</a></li>
@@ -227,6 +227,6 @@
 
            
             
-        </main>
+        {{-- </main> --}}
 
 @endsection

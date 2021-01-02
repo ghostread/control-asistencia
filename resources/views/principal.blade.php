@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
   <meta name="author" content="Łukasz Holeczek">
-  <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+  {{-- <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard"> --}}
 
   <title>SistemaControl</title>
 
@@ -59,13 +59,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-      <img class="navbar-brand-full" src="css/coreui/logo.svg" alt="CoreUI Logo" width="89" height="25">
-      <img class="navbar-brand-minimized" src="css/coreui/sygnet.svg" alt="CoreUI Logo" width="30" height="30">
+      {{-- <img class="navbar-brand-full" src="css/coreui/logo.svg" alt="CoreUI Logo" width="89" height="25">
+      <img class="navbar-brand-minimized" src="css/coreui/sygnet.svg" alt="CoreUI Logo" width="30" height="30"> --}}
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="nav navbar-nav d-md-down-none">
+
+    {{-- <ul class="nav navbar-nav d-md-down-none">
       <li class="nav-item px-3">
         <a class="nav-link" href="#">Dashboard</a>
       </li>
@@ -75,9 +76,10 @@
       <li class="nav-item px-3">
         <a class="nav-link" href="#">Settings</a>
       </li>
-    </ul>
+    </ul> --}}
+
     <ul class="nav navbar-nav ml-auto">
-      <li class="nav-item dropdown d-md-down-none">
+      {{-- <li class="nav-item dropdown d-md-down-none">
         <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
           <i class="icon-bell"></i>
           <span class="badge badge-pill badge-danger">5</span>
@@ -136,8 +138,8 @@
             <small class="text-muted">243GB/256GB</small>
           </a>
         </div>
-      </li>
-      <li class="nav-item dropdown d-md-down-none">
+      </li> --}}
+      {{-- <li class="nav-item dropdown d-md-down-none">
         <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
           <i class="icon-list"></i>
           <span class="badge badge-pill badge-warning">15</span>
@@ -205,8 +207,8 @@
             <strong>View all tasks</strong>
           </a>
         </div>
-      </li>
-      <li class="nav-item dropdown d-md-down-none">
+      </li> --}}
+      {{-- <li class="nav-item dropdown d-md-down-none">
         <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
           <i class="icon-envelope-letter"></i>
           <span class="badge badge-pill badge-info">7</span>
@@ -289,23 +291,35 @@
             <strong>View all messages</strong>
           </a>
         </div>
-      </li>
+      </li> --}}
       <li class="nav-item dropdown">
-        <a class="nav-link nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        <a class="nav-link nav-link mr-4" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
           aria-expanded="false">
-          <img class="img-avatar" src="img/6.jpg" alt="{{Auth::user()->nombre}} {{Auth::user()->apellido}}">
+        
+            <img class="img-avatar"  alt=""><i class="fa fa-sign-out"></i>
+         
+            <span class="img-avatar">{{Auth::user()->nombre}}</span>
+          
         </a>
-        <div class="dropdown-menu dropdown-menu-right">
+        
+        <div class="dropdown-menu dropdown-menu-right mr-3">
           <div class="dropdown-header text-center">
-            <strong>Account</strong>
+            <strong>Cuenta</strong>
           </div>
           <a class="dropdown-item" href="#">
-            <i class="fa fa-bell-o"></i> Updates
-            <span class="badge badge-info">42</span>
+            <i class="fa fa-user"></i> {{Auth::user()->nombre}}<br>
+            <i class=""></i> {{Auth::user()->apellido}}
+            {{-- <span class="badge badge-info">42</span> --}}
           </a>
+
+          {{-- <a class="dropdown-item" href="#">
+            <i class=""></i> {{Auth::user()->apellido}}
+            <span class="badge badge-danger">42</span>
+          </a> --}}
+
           <a class="dropdown-item" href="#">
-            <i class="fa fa-envelope-o"></i> Messages
-            <span class="badge badge-success">42</span>
+            <i class="fa fa-envelope-o"></i> {{Auth::user()->email}}
+            {{-- <span class="badge badge-success">42</span> --}}
           </a>
           {{-- <a class="dropdown-item" href="#">
             <i class="fa fa-tasks"></i> Tasks
@@ -335,19 +349,19 @@
             <i class="fa fa-shield"></i> Lock Account</a> --}}
           <a class="dropdown-item" href="{{route('logout')}}"
           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fa fa-lock"></i> Logout</a>
+            <i class="fa fa-lock"></i> Cerrar Sesion</a>
             <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
                 {{ csrf_field() }} 
             </form>
         </div>
       </li>
     </ul>
-    <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+    {{-- <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
       <span class="navbar-toggler-icon"></span>
     </button>
     <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> --}}
   </header>
   <div class="app-body">
         @if(Auth::check())
@@ -364,14 +378,14 @@
     
     <main class="main">
 
-      <ol class="breadcrumb">
+      {{-- <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
         <li class="breadcrumb-item">
           <a href="#">Admin</a>
         </li>
         <li class="breadcrumb-item active">Dashboard</li>
 
-        <li class="breadcrumb-menu d-md-down-none">
+        {{-- <li class="breadcrumb-menu d-md-down-none">
           <div class="btn-group" role="group" aria-label="Button group">
             <a class="btn" href="#">
               <i class="icon-speech"></i>
@@ -381,13 +395,13 @@
             <a class="btn" href="#">
               <i class="icon-settings"></i> &nbsp;Settings</a>
           </div>
-        </li>
-      </ol>
-      <div class="container-fluid">
-        <div id="ui-view">
+        </li> --}}
+      {{-- </ol> --}} 
+      {{-- <div class="container-fluid"> --}}
+        {{-- <div id="ui-view"> --}}
             @yield('contenido')
-        </div>
-      </div>
+        {{-- </div> --}}
+      {{-- </div> --}}
     </main>
     <aside class="aside-menu">
       <ul class="nav nav-tabs" role="tablist">

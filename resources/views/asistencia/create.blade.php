@@ -2,7 +2,7 @@
 @section('contenido')
 
 
-<main class="main">
+{{-- <main class="main"> --}}
     <ol class="breadcrumb">
     <li class="breadcrumb-item active"><a href="{{route('asistencias.index')}}">Atras</a></li>
     </ol>
@@ -144,7 +144,7 @@
       </div><!-- Fin del body card -->
     </div><!-- Fin card -->
     </div> <!-- Fin del div container fluid -->
-  </main>
+  {{-- </main> --}}
 
   <script type="text/javascript"> 
     function yesnoCheck(that) {

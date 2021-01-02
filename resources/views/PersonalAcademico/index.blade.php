@@ -1,6 +1,6 @@
 @extends('principal')
 @section('contenido')
-<main class="main">
+{{-- <main class="main"> --}}
             <!-- Breadcrumb -->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="/">Sistema control de asistencia</a></li>
@@ -228,5 +228,5 @@
                 <!-- /.modal-dialog -->
              </div>
             <!-- Fin del modal Eliminar --> --}}
-        </main>
+        {{-- </main> --}}
 @endsection

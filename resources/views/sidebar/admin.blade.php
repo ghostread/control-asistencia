@@ -3,7 +3,12 @@
       <ul class="nav">
         <li class="nav-item">
           <a class="nav-link active" href="#">
-            <i class="nav-icon icon-speedometer"></i> Dashboard
+            <i class="nav-icon fa fa-user"></i> Administrador@auth
+                <div class="container ml-3">
+                  <p class="mt-2 mb-0">{{Auth::user()->nombre}}</p>
+                  <p class="">{{Auth::user()->apellido}}</p>
+                </div>
+            @endauth
             <span class="badge badge-info">NEW</span>
           </a>
         </li>
