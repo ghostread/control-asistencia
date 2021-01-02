@@ -3,13 +3,13 @@
       <ul class="nav">
         <li class="nav-item">
           <a class="nav-link active" href="#">
-            <i class="nav-icon fa fa-user"></i> Administrador@auth
+            <i class="nav-icon fa fa-user"></i> Administrador
                 <div class="container ml-3">
                   <p class="mt-2 mb-0">{{Auth::user()->nombre}}</p>
                   <p class="">{{Auth::user()->apellido}}</p>
                 </div>
           
-            <span class="badge badge-info">NEW</span>
+            {{-- <span class="badge badge-info">NEW</span> --}}
           </a>
         </li>
         <li class="nav-title">menu</li>
@@ -30,7 +30,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="{{url('unidadacademica')}}">
+          <a class="nav-link" href="{{url('materias')}}">
               <i class="nav-icon fa fa-book"></i> Materias</a>
           </li>
 
@@ -40,8 +40,8 @@
             </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="{{url('unidadacademica')}}">
-            <i class="nav-icon fa fa-key"></i> Herramientas</a>
+        <a class="nav-link" href="{{url('herramientas')}}">
+            <i class="nav-icon fa fa-wrench"></i> Herramientas</a>
         </li>
 {{--         
         <li class="nav-title">Components</li> --}}

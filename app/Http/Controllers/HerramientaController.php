@@ -20,7 +20,7 @@ class HerramientaController extends Controller
             $herramientas=DB::table('herramientas')
             ->where('nombre','like','%'.$sql.'%')
             ->orderBy('id','desc')
-            ->paginate(5);
+            ->paginate(8);
             return view('Herramienta.index',['herramientas'=>$herramientas,'buscarTexto'=>$sql]);
             // return $herramientas;
         }
