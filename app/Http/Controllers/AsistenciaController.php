@@ -233,7 +233,7 @@ class AsistenciaController extends Controller
         $asistencia->plataforma = $request->plataforma;
         $asistencia->observacion = $request->observacion;
         $asistencia->herramientas =$cadenaTexto;
-        $asistencia->fechaRepo = $request->fechaReposicion;
+        $asistencia->fecharepo = $request->fechaReposicion;
         $asistencia->link =  $request->link;
         // $asistencia->archivos =  $request->archivo;
         // $asistencia->archivos =  $request->chek;
