@@ -8,15 +8,38 @@
           </a>
         </li>
         <li class="nav-title">menu</li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="{{url('unidadacademica')}}">
+              <i class="nav-icon fas fa-school"></i> Unidades Academicas</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('roles')}}">
+                <i class="nav-icon fa fa-users"></i> Roles</a>
+            </li>
+
         <li class="nav-item">
         <a class="nav-link" href="{{url('user')}}">
-            <i class="nav-icon fa fa-list"></i> Usuarios</a>
+            <i class="nav-icon fa fa-users"></i> Usuarios</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{url('unidadacademica')}}">
+              <i class="nav-icon fa fa-book"></i> Materias</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('clases')}}">
+                <i class="nav-icon fa fa-book"></i> Asignacion Materias</a>
+            </li>
+
         <li class="nav-item">
         <a class="nav-link" href="{{url('unidadacademica')}}">
-            <i class="nav-icon fa fa-pencil"></i> Unidad Academica</a>
+            <i class="nav-icon fa fa-key"></i> Herramientas</a>
         </li>
-        <li class="nav-title">Components</li>
+{{--         
+        <li class="nav-title">Components</li> --}}
         
    
         
