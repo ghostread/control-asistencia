@@ -3,7 +3,7 @@
       <ul class="nav">
         <li class="nav-item">
           <a class="nav-link active" href="#">
-            @if(Auth::user()->rol===1)
+            @if(Auth::user()->rol===3)
             <i class="nav-icon fa fa-user"></i>Docente :
             @else
             <i class="nav-icon fa fa-user"></i>Auxiliar :

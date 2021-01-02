@@ -112,7 +112,7 @@
                                 border: none;
                                 cursor:pointer;
                                 overflow: hidden;
-                                outline:none;"  data-toggle="modal" data-target="#abrirmodal"/></button> 
+                                outline:none;" value="HOlaf" data-toggle="modal" data-target="#abrirmodal"/></button> 
                               
                       </div>
                     </div>
