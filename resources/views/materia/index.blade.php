@@ -29,6 +29,7 @@
                             {{Form::close()}} --}}
                     </div>
                 </div>
+                <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr class="bg-primary">
@@ -106,9 +107,9 @@
                             </div>
                         </div> --}}
                                 <!--Inicio del modal actualizar-->
-        <div class="modal fade" id="abrirmodaleditar{{ $materia->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-            <div class="modal-dialog modal-primary modal-lg" role="document">
-                <div class="modal-content">
+                 <div class="modal fade" id="abrirmodaleditar{{ $materia->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                 <div class="modal-dialog modal-primary modal-lg" role="document">
+                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Actualizar  Materia</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -137,6 +138,7 @@
                         @endforeach
                     </tbody>
                 </table>
+             </div>
                 
                 
                       {{-- {{$materias->render("pagination::bootstrap-4")}} --}}

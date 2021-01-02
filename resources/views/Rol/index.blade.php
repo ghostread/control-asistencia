@@ -33,61 +33,62 @@
                         
                     </div>
                 </div>
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr class="bg-primary">
-                           
-                            {{-- <th>Unidad</th>
-                            <th>Facultad</th> --}}
-                            <th>ID</th>
-                            <th>Tipos de usuarios</th>
-                            {{-- <th>Editar</th>
-                            <th>Eliminar</th> --}}
-                        </tr>
-                    </thead>
-                    <tbody>
-                       
-                        @foreach($roles as $key => $rol)
-                        
-                        <tr>
-                            <td>{{$rol->id}}</td>
-                            <td>{{$rol->rol}}</td>
-                            {{-- <td>{{$unidad->facultad}}</td> --}}
-                            {{-- <td>
-                                <button type="button" class="btn btn-success btn-md">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="bg-primary">
                             
-                                  <i class="fa fa-check fa-0.5x"></i> Activo
-                                </button>
-                               
-                            </td> --}}
+                                {{-- <th>Unidad</th>
+                                <th>Facultad</th> --}}
+                                <th>ID</th>
+                                <th>Tipos de usuarios</th>
+                                {{-- <th>Editar</th>
+                                <th>Eliminar</th> --}}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            @foreach($roles as $key => $rol)
+                            
+                            <tr>
+                                <td>{{$rol->id}}</td>
+                                <td>{{$rol->rol}}</td>
+                                {{-- <td>{{$unidad->facultad}}</td> --}}
+                                {{-- <td>
+                                    <button type="button" class="btn btn-success btn-md">
+                                
+                                    <i class="fa fa-check fa-0.5x"></i> Activo
+                                    </button>
+                                
+                                </td> --}}
 
-                            {{-- <td>
-                            <form action="{{route('unidadacademica.update',$unidad->id)}}" method="post">
-                                <button type="button" class="btn btn-primary btn-sm" 
-                                data-toggle="modal"
-                                data-id_unidad="{{$unidad->id}}" 
-                                data-nombre="{{$unidad->nombre}}" 
-                                data-facultad="{{$unidad->facultad}}" 
-                                data-target="#abrirmodaleditar">
-                                  <i class="fa fa-edit fa-0.5x"></i> Editar
-                                </button>
-                            </form>
-                            </td> --}}
+                                {{-- <td>
+                                <form action="{{route('unidadacademica.update',$unidad->id)}}" method="post">
+                                    <button type="button" class="btn btn-primary btn-sm" 
+                                    data-toggle="modal"
+                                    data-id_unidad="{{$unidad->id}}" 
+                                    data-nombre="{{$unidad->nombre}}" 
+                                    data-facultad="{{$unidad->facultad}}" 
+                                    data-target="#abrirmodaleditar">
+                                    <i class="fa fa-edit fa-0.5x"></i> Editar
+                                    </button>
+                                </form>
+                                </td> --}}
 
-                            {{-- <td>
-                                     <form action="{{route('unidadacademica.destroy',$unidad->id)}}" method="post">
-                                        {{csrf_field()}}
-                                        {{method_field('delete')}}
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-remove fa-0.5x"></i> Eliminar
-                                        </button>
-                                    </form>
-                            </td> --}}
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                
+                                {{-- <td>
+                                        <form action="{{route('unidadacademica.destroy',$unidad->id)}}" method="post">
+                                            {{csrf_field()}}
+                                            {{method_field('delete')}}
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-remove fa-0.5x"></i> Eliminar
+                                            </button>
+                                        </form>
+                                </td> --}}
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
                 
                       {{$roles->render()}}
                    

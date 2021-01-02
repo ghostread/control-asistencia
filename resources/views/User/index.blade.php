@@ -2,12 +2,12 @@
 @section('contenido')
 
             <!-- Breadcrumb -->
-            <ol class="breadcrumb">
+            {{-- <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="/">Sistema control de asistencia</a></li>
-            </ol>
+            </ol> --}}
             <div class="container-fluid">
                 <!-- Ejemplo de tabla Listado -->
-                <div class="card">
+                <div class="card mt-1">
                     <div class="card-header">
 
                        <h2>Listado de Usuarios</h2><br/>
@@ -27,7 +27,8 @@
                                 </div>
                              {{Form::close()}} 
                             </div>
-                        </div> 
+                        </div>
+                        <div class="table-responsive"> 
                         <table class="table table-striped table-sm">
                             <thead>
                                 <tr class="bg-primary">
@@ -115,6 +116,7 @@
                                
                             </tbody>
                         </table>
+                    </div>
                             
                             {{$usuarios->render("pagination::bootstrap-4")}}
 

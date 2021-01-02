@@ -33,6 +33,7 @@
                         
                     </div>
                 </div>
+                <div class="table-responsive">
                 <table class="table table-bordered table-striped table-sm">
                     <thead>
                         <tr class="bg-primary">
@@ -90,7 +91,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                
+                 </div>
                 
                       {{$herramientas->render("pagination::bootstrap-4")}}
                    

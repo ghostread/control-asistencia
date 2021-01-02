@@ -367,7 +367,7 @@
       <span class="navbar-toggler-icon"></span>
     </button> --}}
   </header>
-  <div class="app-body">
+  <div class="app-body ">
         @if(Auth::check())
                 @if (Auth::user()->rol == 1)
                      @include('sidebar.admin')
