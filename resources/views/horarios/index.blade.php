@@ -13,8 +13,8 @@
 
                <h2>Horarios De {{$materia->nombre}} </h2><br/>
               
-                <button class="btn btn-primary btn-lg rounded" type="button" data-toggle="modal" data-target="#abrirmodal">
-                    <i class="fa fa-plus fa-1x"></i>&nbsp;&nbsp;Agregar Nueva Horario
+                <button class="btn btn-primary btn-md rounded" type="button" data-toggle="modal" data-target="#abrirmodal">
+                    <i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar Nueva Horario
                 </button>
             </div>
             <div class="card-body">

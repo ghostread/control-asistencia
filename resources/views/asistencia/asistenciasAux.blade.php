@@ -6,8 +6,8 @@
        {{-- <a href="{{route('asistencias.create')}}"> --}}
     
 
-        <button class="btn btn-primary btn-lg" type="button" data-toggle="modal" data-target="#abrirmodalregistrar">
-            <i class="fa fa-plus fa-1x"></i>&nbsp;&nbsp;Registrar Asistencia
+        <button class="btn btn-primary btn-md" type="button" data-toggle="modal" data-target="#abrirmodalregistrar">
+            <i class="fa fa-plus"></i>&nbsp;&nbsp;Registrar Asistencia
         </button>
 
         {{-- </a> --}}

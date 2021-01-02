@@ -12,8 +12,8 @@
 
                        <h2>Listado de Usuarios</h2><br/>
                       
-                        <button class="btn btn-primary btn-lg" type="button" data-toggle="modal" data-target="#abrirmodal">
-                            <i class="fa fa-plus fa-1x"></i>&nbsp;&nbsp;Agregar Usuario
+                        <button class="btn btn-primary btn-md" type="button" data-toggle="modal" data-target="#abrirmodal">
+                            <i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar Usuario
                         </button>
                     </div>
                     <div class="card-body">
