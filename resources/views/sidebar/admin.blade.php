@@ -8,7 +8,7 @@
                   <p class="mt-2 mb-0">{{Auth::user()->nombre}}</p>
                   <p class="">{{Auth::user()->apellido}}</p>
                 </div>
-            @endauth
+          
             <span class="badge badge-info">NEW</span>
           </a>
         </li>
