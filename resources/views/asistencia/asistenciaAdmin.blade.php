@@ -75,20 +75,20 @@
             {{Form::close()}}
         </div>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-sm">
                 <thead>
                     <tr class="bg-primary ">
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Rol</th>
                         <th>Cod SIS</th>
-                        <th width="99">Fecha Registro</th>
+                        <th width="99">Fecha&nbsp;Registro</th>
                         <th>Hora</th>
                         <th>Dia</th>
                         <th>Grupo</th>
                         <th>idM</th>
                         <th>Materia</th>
-                        <th width="99">Fecha clase</th>
+                        <th width="99">Fecha&nbsp;clase</th>
                         <th width="5">Clase</th>
                         @if($contador!=0)
                             

@@ -105,6 +105,7 @@
                     <th>Materia</th>
                     <th>Total Asistencias</th>
                     <th>Carga Horaria</th>
+                    {{-- <th>Total Horarios</th> --}}
                     {{-- <th>Grupo</th>
                     <th>idM</th>
                     <th>Materia</th>
@@ -122,7 +123,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($asistencias as $asistencia)
+                @foreach($asistencias  as $asistencia)
+                
+                
                 <tr>
                     <td>{{$asistencia->nombre}}</td>
                     <td>{{$asistencia->apellido}}</td>
@@ -130,6 +133,9 @@
                     <td>{{$asistencia->materia}}</td>
                     <td>{{$asistencia->totalregistro}}</td>
                     <td>{{$asistencia->cargahoraria}} hrs.</td>
+                    {{-- @foreach($totalhorarios  as $horarios)
+                    <td>{{$horarios->totalhorarios}}</td>
+                    @endforeach --}}
                     {{-- <td>{{$asistencia->dia}}</td>
                     <td>{{$asistencia->grupo}}</td>
                     <td>{{$asistencia->idmateria}}</td>
@@ -145,6 +151,7 @@
                     {{-- <td>{!!$asistencia->herramientas!!}</td> --}}
                    
                 </tr>
+               
                 @endforeach                               
             </tbody>
         </table>
