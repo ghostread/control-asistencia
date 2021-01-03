@@ -11,7 +11,9 @@
            </div>
 
            <div class="row">
-            <p>{{ \Carbon\Carbon::now()->toDateString() }}</p>
+            <label class="col-auto">Fecha de hoy: </label>                
+            <p class="col-auto">{{\Carbon\Carbon::now()->toDateString()}}</p>
+            
            </div>
         </div>
     

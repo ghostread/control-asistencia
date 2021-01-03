@@ -28,7 +28,8 @@
                              {{Form::close()}} 
                             </div>
                         </div> 
-                        <table class="table table-bordered table-striped table-sm">
+                        <div class="table-responsive">
+                        <table class="table table-striped table-sm">
                             <thead>
                                 <tr class="bg-primary">
                                    
@@ -118,7 +119,7 @@
                                
                             </tbody>
                         </table>
-                            
+                    </div>
                             {{$clases->render()}}
 
                     </div>
