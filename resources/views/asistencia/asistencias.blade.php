@@ -48,14 +48,16 @@
                                 <thead>
                                     <tr class="bg-primary ">
                                         
-                                        <th>Fecha</th>
+                                        <th>Fecha&nbsp;Registro</th>
                                         <th>Hora</th>
                                         <th>Dia</th>
                                         <th>Grupo</th>
                                         <th>idM</th>
                                         <th>Materia</th>
                                         <th>Clase</th>
-                                        <th>Feha de Repocision</th>
+                                        <th>Fecha&nbsp;Clase</th>
+
+                                        <th>Feha Repocision</th>
                                         <th>Contenido</th>
                                         <th>Platafoma</th>
                                         <th>Observaciones</th> 
@@ -80,6 +82,7 @@
                                         <td class="align-middle">{{$asistencia->idmateria}}</td>
                                         <td class="align-middle">{{$asistencia->nombre}}</td>
                                         <td class="align-middle">{{$asistencia->tipoclase}}</td>
+                                        <td class="align-middle">{{$asistencia->fecha}}</td>
                                         <td class="align-middle">{{$asistencia->fecharepo}}</td>
                                         <td class="align-middle">{{$asistencia->contenido}}</td>
                                         <td class="align-middle">{{$asistencia->plataforma}}</td>

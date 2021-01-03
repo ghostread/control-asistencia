@@ -45,7 +45,7 @@ class AsistenciaController extends Controller
                     // ->join('clases','materias.id','=','clases.materia')
                     ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
                     ->select('asistencias.id','asistencias.contenido','asistencias.plataforma',
-                    'asistencias.herramientas','asistencias.fecharepo','asistencias.link','horas.dia',
+                    'asistencias.herramientas','asistencias.fecharepo','asistencias.fecha','asistencias.link','horas.dia',
                     'asistencias.tipoclase','asistencias.created_at','horas.hora','asistencias.observacion','asistencias.archivos',
                     'materias.nombre','materias.grupo','unidadacademica.facultad',
                     'unidadacademica.nombre as unidad','materias.id as idmateria')
@@ -75,7 +75,7 @@ class AsistenciaController extends Controller
                     // ->join('clases','materias.id','=','clases.materia')
                     ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
                     ->select('asistencias.id','asistencias.contenido','asistencias.plataforma',
-                    'asistencias.herramientas','asistencias.fecharepo','asistencias.link','horas.dia',
+                    'asistencias.herramientas','asistencias.fecharepo','asistencias.fecha','asistencias.link','horas.dia',
                     'asistencias.tipoclase','asistencias.created_at','horas.hora','asistencias.observacion','asistencias.archivos',
                     'materias.nombre','materias.grupo','unidadacademica.facultad',
                     'unidadacademica.nombre as unidad','materias.id as idmateria')
@@ -227,15 +227,16 @@ class AsistenciaController extends Controller
         
         // $fechaejemplo=$request->fecha->diff($request->fechaReposicion);
 
-        // $this->validate($request, [
-        //     'herramientas' => 'required',
-        //     'contenido'=>'required',
-        //     // 'body' => 'required',
-        // ]);
+        $this->validate($request, [
+            'herramientas' => 'required',
+            'contenido'=>'required',
+            'archivo' => 'max:8388600',
+
+        ]);
         // FECHA: {{date('d-m-Y', strtotime($index->fecha_atraso)) }} (12-06-2018)
 
         
-        $he=($request->get('chek'));
+        $he=($request->get('herramientas'));
         $cadena=array_keys($he) ;
         $cadenaTexto = implode(", ", $cadena);
         // $cadenatxt=json_encode($cadena);

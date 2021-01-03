@@ -80,7 +80,7 @@
                        
                       @foreach($herramientas as $herramienta)
                         <div class="form-check form-check" required>
-                          <input name="chek[{{$herramienta->herramienta}}]" class="form-check-input" type="checkbox" id="{{$herramienta->id}}">
+                          <input name="herramientas[{{$herramienta->herramienta}}]" class="form-check-input" type="checkbox" id="{{$herramienta->id}}">
                           <label class="form-check-label" for="{{$herramienta->id}}">{{$herramienta->herramienta}}</label>
                         </div>
                       @endforeach
@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="form-group ">
-                      <label class="form-control-label" for="archivo">Archivos</label>
+                      <label class="form-control-label" for="archivo">Archivos (Maximo tamaño 8Mg)</label>
                           <input class="form-control " type="file" id="archivo" name="archivo" class="form-control">     
                     </div>
                     <hr>

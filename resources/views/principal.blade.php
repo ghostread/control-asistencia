@@ -63,8 +63,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-      {{-- <img class="navbar-brand-full" src="css/coreui/logo.svg" alt="CoreUI Logo" width="89" height="25">
-      <img class="navbar-brand-minimized" src="css/coreui/sygnet.svg" alt="CoreUI Logo" width="30" height="30"> --}}
+      <img class="navbar-brand-full" src="css/coreui/logo.svg" alt="CoreUI Logo" width="89" height="25">
+      <img class="navbar-brand-minimized" src="css/coreui/sygnet.svg" alt="CoreUI Logo" width="30" height="30">
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
       <span class="navbar-toggler-icon"></span>
@@ -407,7 +407,7 @@
         {{-- </div> --}}
       {{-- </div> --}}
     </main>
-    <aside class="aside-menu">
+    {{-- <aside class="aside-menu">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">
@@ -706,7 +706,7 @@
           <small class="text-muted">25GB/256GB</small>
         </div>
       </div>
-    </aside>
+    </aside> --}}
   </div>
   {{-- <footer class="app-footer">
     <div>
@@ -725,7 +725,7 @@
 </footer>
 
   <script src="{{asset('css/coreui/jquery.js')}}"></script>
-  <script src="{{asset('css/coreui/popper.min.js')}}"></script>
+  <script src="{{asset('css/coreui/popper.js')}}"></script>
   <script src="{{asset('css/coreui/bootstrap.js')}}"></script>
   <script src="{{asset('css/coreui/pace.js')}}"></script>
   <script src="{{asset('css/coreui/perfect-scrollbar.js')}}"></script>
