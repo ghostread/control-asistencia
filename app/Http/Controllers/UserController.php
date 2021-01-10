@@ -145,8 +145,10 @@ class UserController extends Controller
            return Redirect::to("user");
      }
  
-     public function destroy(Request $request)
+     public function destroy($id)
      {
+        User::findOrFail($id)->delete();
+        return Redirect::to('user');
             //  //
             //  $user= User::findOrFail($request->id_usuario);
             
