@@ -33,6 +33,7 @@
                             <thead>
                                 <tr class="bg-primary">
                                    
+                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Codigo SIS</th>
@@ -42,7 +43,7 @@
                                     {{-- <th>Usuario</th> --}}
                                     <th>Rol</th>
                                     {{-- <th>Estado</th> --}}
-                                    <th>Eliminar</th>
+                                    <th class="text-center">Eliminar</th>
                                     {{-- <th>Cambiar Estado</th> --}}
                                 </tr>
                             </thead>
@@ -52,6 +53,7 @@
                                
                                 <tr>
                                     
+                                    <td>{{$user->id}}</td>
                                     <td>{{$user->nombre}}</td>
                                     <td>{{$user->apellido}}</td>
                                     <td>{{$user->codsis}}</td>
