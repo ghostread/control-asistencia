@@ -111,6 +111,7 @@
                                         {{-- <th>Carrera</th>
                                         <th>Facultad</th> --}}
                                         <th width="70">Herramientas</th>
+                                        <th>Archivo</th>
                                         {{-- "google doc<br>google meet" --}}
                                         
                                     </tr>
@@ -135,8 +136,8 @@
                                     <td class="align-middle"><a href="{{$asistencia->link}}" title="{{$asistencia->link}}" target="blank"> {!! !empty($asistencia->link) ? '<i class="fas fa-video"></i>' : '' !!}</a></td>
                                         {{-- <td class="align-middle">{{$asistencia->unidad}}</td>
                                         <td class="align-middle">{{$asistencia->facultad}}</td> --}}
-                                        <td class="align-middle ">{!!$asistencia->herramientas!!}</td>
-                                        
+                                        <td class="align-middle ">{!!$asistencia->herramientas!!}</td>  
+                                        <td class="align-middle"><a target="blank" href="{{asset('/storage/archivos/'.$asistencia->archivos)}}"> {!! !empty($asistencia->archivos) ? '<i class="fas fa-file-alt"></i>' : '' !!}</a></td>                                   
                                     </tr>
 
                                     @endforeach
@@ -145,7 +146,7 @@
                             </table>
                         </div> 
 
-                        {{-- {{$asistencia->render()}} --}}
+                        {{$asistencias->render()}}
                         
                     </div>
                 </div>
