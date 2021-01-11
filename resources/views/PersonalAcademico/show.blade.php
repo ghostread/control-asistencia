@@ -95,19 +95,19 @@
                                 <thead>
                                     <tr class="bg-primary ">
                                         
-                                        <th width="90">Fecha Registro</th>
-                                        <th width="90">Fecha Clase</th>
+                                        <th width="90">Fecha&nbsp;Registro</th>
+                                        <th width="90">Fecha&nbsp;Clase</th>
                                         <th>Hora</th>
                                         <th>Dia</th>
                                         <th>Grupo</th>
                                         <th>idM</th>
                                         <th>Materia</th>
                                         <th width="50">Clase</th>
-                                        <th width="50">Feha de Repocision</th>
+                                        <th width="50">Feha Repocision</th>
                                         <th width="350">Contenido</th>
                                         <th>Platafoma</th>
                                         <th>Observaciones</th> 
-                                        <th width="50">Link clases</th>
+                                        <th width="50">Link</th>
                                         {{-- <th>Carrera</th>
                                         <th>Facultad</th> --}}
                                         <th width="70">Herramientas</th>

@@ -92,12 +92,12 @@
                         <th width="5">Clase</th>
                         @if($contador!=0)
                             
-                        <th width="96">Feha de Repocision</th>
+                        <th width="96">Feha Repocision</th>
                         @endif
                         <th width="250">Contenido</th>
-                        <th>Platafoma</th>
+                        <th>Plataforma</th>
                         <th>Observaciones</th> 
-                        <th>Link clases</th>
+                        <th>Link</th>
                         <th>Carrera</th>
                         {{-- <th>Facultad</th> --}}
                         <th width="10">Herramientas</th>
