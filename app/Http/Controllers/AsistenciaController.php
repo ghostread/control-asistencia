@@ -120,7 +120,7 @@ class AsistenciaController extends Controller
                     ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
                     ->select('asistencias.id','asistencias.contenido','asistencias.plataforma',
                     'asistencias.herramientas','asistencias.fecharepo','asistencias.link','asistencias.fecha',
-                    'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion',
+                    'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion','asistencias.archivos',
                     'materias.nombre as materia','materias.grupo','unidadacademica.facultad','horas.dia',
                     'unidadacademica.nombre as unidad','materias.id as idmateria','users.nombre','users.apellido','users.codsis','roles.rol')
                     // ->where('clases.user','=',$userId)
@@ -143,7 +143,7 @@ class AsistenciaController extends Controller
                     ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
                     ->select('asistencias.id','asistencias.contenido','asistencias.plataforma',
                     'asistencias.herramientas','asistencias.fecharepo','asistencias.link','asistencias.fecha',
-                    'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion',
+                    'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion','asistencias.archivos',
                     'materias.nombre as materia','materias.grupo','unidadacademica.facultad','horas.dia',
                     'unidadacademica.nombre as unidad','materias.id as idmateria','users.nombre','users.apellido','users.codsis','roles.rol')
                     // ->where('clases.user','=',$userId)
