@@ -157,6 +157,7 @@
         </table>
     </div>
     <div class="izquierda">
+      
         {{-- <p><strong>Total de registros: </strong>{{$cont}}</p> --}}
     </div>    
 </body>

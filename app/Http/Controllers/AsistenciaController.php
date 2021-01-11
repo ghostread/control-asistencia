@@ -62,7 +62,7 @@ class AsistenciaController extends Controller
                 ->join('clases','materias.id','=','clases.materia')
                 ->select('horas.id','horas.hora','horas.dia','materias.id as materiaid','materias.nombre')
                 ->where('clases.user','=',$userId)
-                ->where('horas.tipo','=','aux')
+                ->where('horas.tipo','=','Auxiliar')
                 ->get();
 
                 return view('asistencia.index',['materias'=>$horarios,'asistencias'=>$asistencias]);
@@ -92,7 +92,7 @@ class AsistenciaController extends Controller
                 ->join('clases','materias.id','=','clases.materia')
                 ->select('horas.id','horas.hora','horas.dia','materias.id as materiaid','materias.nombre')
                 ->where('clases.user','=',$userId)
-                ->where('horas.tipo','=','docent')
+                ->where('horas.tipo','=','Docencial')
                 ->get();
 
                 return view('asistencia.index',['materias'=>$horarios,'asistencias'=>$asistencias]);
@@ -352,7 +352,7 @@ class AsistenciaController extends Controller
 
         $fechaini=($request->get('fechainicio'));
         $fechafin=($request->get('fechafin'));
-      $reporte;
+        $reporte;
 
         // if($fechaini&&$fechafin){
         //      $reporte=DB::table('clases')
