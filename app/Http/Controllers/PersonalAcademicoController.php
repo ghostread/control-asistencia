@@ -26,7 +26,7 @@ class PersonalAcademicoController extends Controller
             ->where('users.rol','=',3)
             ->orwhere('users.rol','=',4)
             ->orwhere('users.rol','=',5)                      
-            ->paginate(3);
+            ->paginate(10);
 
 
            return view('PersonalAcademico.index',['usuarios'=>$personal,'buscarTexto'=>$sql]);
