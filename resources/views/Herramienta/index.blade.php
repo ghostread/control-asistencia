@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                <table class="table table-bordered table-striped table-sm">
+                <table class="table table-striped table-sm">
                     <thead>
                         <tr class="bg-primary">
                            

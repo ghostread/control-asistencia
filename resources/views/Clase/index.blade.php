@@ -44,7 +44,7 @@
                                     <th>Grupo</th>
                                     <th>Carrera</th>
                                     <th>Facultad</th>
-                                    <th>Eliminar</th>
+                                    <th class="text-center">Eliminar</th>
                                     {{-- <th>Cambiar Estado</th> --}}
                                 </tr>
                             </thead>
