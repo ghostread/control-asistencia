@@ -15,6 +15,10 @@ class AsistenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
         
@@ -31,7 +35,7 @@ class AsistenciaController extends Controller
             
             // $hera=$asistencias->first()->herramientas;
             // $herra=json_decode($hera,true);
-
+            
 
              /*listar los materias en ventana modal*/
             //  $horarios;

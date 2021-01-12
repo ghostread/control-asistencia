@@ -14,6 +14,10 @@ class UnidadAcademicaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
         // $unidad = DB::table('unidadacademica')->paginate(5);
@@ -90,6 +94,7 @@ class UnidadAcademicaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function update(Request $request,$id)
     {
         $unidad =UnidadAcademica::findOrFail($request->id_unidad); 
