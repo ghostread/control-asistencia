@@ -115,7 +115,7 @@ class AsistenciaController extends Controller
                     'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion','asistencias.archivos',
                     'materias.nombre as materia','materias.grupo','unidadacademica.facultad','horas.dia',
                     'unidadacademica.nombre as unidad','materias.id as idmateria','users.nombre','users.apellido','users.codsis','roles.rol')
-                    //  ->where('unidadacademica.jefe','=',$userId)
+                     ->where('unidadacademica.jefe','=',$userId)
                     ->whereBetween('asistencias.fecha', [$fechainicio, $fechafin])
                     ->orderBy('asistencias.fecha','desc')
                     ->paginate(15);
@@ -134,7 +134,7 @@ class AsistenciaController extends Controller
                     'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion','asistencias.archivos',
                     'materias.nombre as materia','materias.grupo','unidadacademica.facultad','horas.dia',
                     'unidadacademica.nombre as unidad','materias.id as idmateria','users.nombre','users.apellido','users.codsis','roles.rol')
-                    // ->where('unidadacademica.jefe','=',$userId)
+                    ->where('unidadacademica.jefe','=',$userId)
                     ->orderBy('asistencias.fecha','desc')
                     ->paginate(15);
                 }
