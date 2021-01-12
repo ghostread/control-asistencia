@@ -24,8 +24,8 @@ class UnidadAcademicaController extends Controller
         if($request){
             $sql=trim($request->get('buscarTexto'));
             $unidades=DB::table('unidadacademica')
-            // ->join('users','users.id','=','unidadacademica.jefe')
-            ->select('unidadacademica.id','unidadacademica.nombre','unidadacademica.facultad')
+            ->join('users','users.id','=','unidadacademica.jefe')
+            ->select('unidadacademica.id','unidadacademica.nombre','unidadacademica.facultad','users.nombre as jefe','users.apellido')
             ->where('unidadacademica.nombre','LIKE','%'.$sql.'%')
             ->orderBy('id','desc')
             ->paginate(5);
@@ -60,6 +60,13 @@ class UnidadAcademicaController extends Controller
      */
     public function store(Request $request)
     {
+
+        // $this->validate($request, [
+        //     'nombre' => 'required',
+        //     'facultad'=>'required',
+        //     'jefe'=>'required',
+        // ]);
+
         $unidad = new UnidadAcademica(); 
         $unidad->nombre=$request->nombre;
         $unidad->facultad=$request->facultad;

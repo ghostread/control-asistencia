@@ -1,7 +1,7 @@
 <div class="form-group row">
     <label class="col-md-3 form-control-label" for="unidad">Nombre</label>
     <div class="col-md-9">
-        <input type="text" name="nombre" id="nombre" class="form-control" autocomplete="off" placeholder="Nombre de la unidad academica">   
+        <input type="text" name="nombre" id="nombre" class="form-control" autocomplete="off" placeholder="Nombre de la unidad academica" required>   
     </div>
 </div>
 
@@ -33,9 +33,9 @@
     <label class="col-md-3 form-control-label" for="jefe">Jefe de Unidad</label>
     <div class="col-md-9">
         <select  class="form-control"  name="jefe" id="jefe" required>                                
-        <option value="0" selected="true" disabled="disabled">Seleccione</option>
+        <option value="" selected="true" disabled="disabled">Seleccione</option>
             @foreach($jefes as $jefe)      
-                <option value="{{$jefe->id}}" aria-required="true">{{$jefe->nombre}}</option>        
+                <option value="{{$jefe->id}}">{{$jefe->nombre}}</option>        
             @endforeach
         </select>    
     </div>                               

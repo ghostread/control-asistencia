@@ -35,6 +35,7 @@
                            
                             <th >Unidad</th>
                             <th>Facultad</th>
+                            <th>Jefe de Unidad</th>
                             {{-- <th>Estado</th> --}}
                             {{-- <th class="text-center">Editar</th> --}}
                             <th  class="text-center m-auto">Eliminar</th>
@@ -48,6 +49,7 @@
                             
                             <td>{{$unidad->nombre}}</td>
                             <td>{{$unidad->facultad}}</td>
+                            <td>{{$unidad->jefe}} {{$unidad->apellido}}</td>
                             {{-- <td>
                                 <button type="button" class="btn btn-success btn-md">
                             
