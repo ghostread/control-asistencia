@@ -168,6 +168,11 @@ class PersonalAcademicoController extends Controller
             // ->orderBy('asistencias.tipoclase','desc')
             ->paginate(15);
             }else{
+                $jefe=Auth::user()->id;
+                $unidad=DB::table('unidadacademica')
+                ->select('unidadacademica.id')
+                ->where('unidadacademica.jefe','=',$jefe)->first();
+                
                 global $asistencias;
                 $sql=trim($request->get('buscarTexto'));
             $asistencias=DB::table('asistencias')
