@@ -9,7 +9,6 @@
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            /* font-size: 0.875rem; */
             font-size: 12px;
             font-weight: normal;
             line-height: 1.5;
@@ -92,7 +91,6 @@
         @if($fechainicio&&$fechafin)
             <p>Fechas: <span class="izquierda"></span> {{$fechainicio}} al {{$fechafin}}</p>
         @endif
-        {{-- <p>Nombre:  <span class="izquierda"></span> {{$fechainicio}} - {{$fechafin}}</p> --}}
         
     </div>
     <div>
@@ -101,64 +99,40 @@
                 <tr> 
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    {{-- <th>ID Materia</th> --}}
+                    <th>Grupo</th>
                     <th>Materia</th>
-                    <th>Total Asistencias</th>
-                    <th>Carga Horaria</th>
-                    {{-- <th>Total Horarios</th> --}}
-                    {{-- <th>Grupo</th>
-                    <th>idM</th>
-                    <th>Materia</th>
-                    <th>Clase</th>
-                    <th>Feha Repocision</th>
-                    <th>Contenido</th>
-                    <th>Platafoma</th>
-                    <th>Observaciones</th> 
-                    <th>Link clases</th> --}}
-                    {{-- <th>Carrera</th>
-                    <th>Facultad</th> --}}
-                    {{-- <th>Herramientas</th> --}}
-                    {{-- <th>Stock</th> --}}
-                    
+                    <th width="20" >Total Asistencias</th>
+                    <th width="20">Total Repocision</th>
+                    @if($semanas)
+                        
+                      <th width="20">Total Faltas</th>
+                    @endif
+
+                    <th width="20">Carga Horaria</th>
+  
                 </tr>
             </thead>
             <tbody>
-                @foreach($asistencias  as $asistencia)
-                
-                
+                @foreach($asistencias as $asistencia)
                 <tr>
                     <td>{{$asistencia->nombre}}</td>
                     <td>{{$asistencia->apellido}}</td>
-                    {{-- <td>{{$asistencia->IDmateria}}</td> --}}
-                    <td>{{$asistencia->materia}}</td>
-                    <td>{{$asistencia->totalregistro}}</td>
-                    <td>{{$asistencia->cargahoraria}} hrs.</td>
-                    {{-- @foreach($totalhorarios  as $horarios)
-                    <td>{{$horarios->totalhorarios}}</td>
-                    @endforeach --}}
-                    {{-- <td>{{$asistencia->dia}}</td>
                     <td>{{$asistencia->grupo}}</td>
-                    <td>{{$asistencia->idmateria}}</td>
-                    <td>{{$asistencia->nombre}}</td>
-                    <td>{{$asistencia->tipoclase}}</td>
-                    <td>{{$asistencia->fecharepo}}</td>
-                    <td>{{$asistencia->contenido}}</td>
-                    <td>{{$asistencia->plataforma}}</td>
-                    <td>{{$asistencia->observacion}}</td>
-                    <td><a href="{{$asistencia->link}}" target="blank">Video</a></td> --}}
-                    {{-- <td class="align-middle">{{$asistencia->unidad}}</td>
-                    <td class="align-middle">{{$asistencia->facultad}}</td> --}}
-                    {{-- <td>{!!$asistencia->herramientas!!}</td> --}}
+                    <td>{{$asistencia->materia}}</td>
+
+                    <td>{{$asistencia->totalregistro}}</td>
+                    <td>{{$asistencia->totalrepo}}</td>
+                    @if($semanas)
+                        
+                    <td>{{$semanas*2 - $asistencia->totalregistro}}</td>
+                    @endif
+                    <td>{{$asistencia->cargahoraria}} hrs.</td>
+                  
                    
                 </tr>
-               
                 @endforeach                               
             </tbody>
         </table>
-    </div>
-    <div class="izquierda">
-      
-        {{-- <p><strong>Total de registros: </strong>{{$cont}}</p> --}}
-    </div>    
+    </div> 
 </body>
 </html>

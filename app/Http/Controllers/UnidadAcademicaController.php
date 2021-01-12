@@ -23,7 +23,10 @@ class UnidadAcademicaController extends Controller
         // $unidad = DB::table('unidadacademica')->paginate(5);
         if($request){
             $sql=trim($request->get('buscarTexto'));
-            $unidades=DB::table('unidadacademica')->where('nombre','LIKE','%'.$sql.'%')
+            $unidades=DB::table('unidadacademica')
+            // ->join('users','users.id','=','unidadacademica.jefe')
+            ->select('unidadacademica.id','unidadacademica.nombre','unidadacademica.facultad')
+            ->where('unidadacademica.nombre','LIKE','%'.$sql.'%')
             ->orderBy('id','desc')
             ->paginate(5);
 
@@ -34,7 +37,7 @@ class UnidadAcademicaController extends Controller
             ->where('rol','=','2')->get();
 
             return view('UnidadAcademica.index',['unidades'=>$unidades,'buscarTexto'=>$sql,'jefes'=>$jefes]);
-            // return $jefes;
+            // return $unidades;
         }
         // return view('UnidadAcademica.index',['unidades'=>$unidades,'buscarTexto'=>$sql]);
     }
@@ -60,6 +63,7 @@ class UnidadAcademicaController extends Controller
         $unidad = new UnidadAcademica(); 
         $unidad->nombre=$request->nombre;
         $unidad->facultad=$request->facultad;
+        $unidad->jefe=$request->jefe;
         $unidad->save();
         return Redirect::to('unidadacademica');
     }

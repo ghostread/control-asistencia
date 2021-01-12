@@ -32,10 +32,10 @@
 <div class="form-group row">
     <label class="col-md-3 form-control-label" for="jefe">Jefe de Unidad</label>
     <div class="col-md-9">
-        <select  class="form-control"  name="jefe" id="jefe">                                
+        <select  class="form-control"  name="jefe" id="jefe" required>                                
         <option value="0" selected="true" disabled="disabled">Seleccione</option>
             @foreach($jefes as $jefe)      
-                <option value="{{$jefe->id}}">{{$jefe->nombre}}</option>        
+                <option value="{{$jefe->id}}" aria-required="true">{{$jefe->nombre}}</option>        
             @endforeach
         </select>    
     </div>                               

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 $datos;
 class PersonalAcademicoController extends Controller
@@ -22,18 +23,23 @@ class PersonalAcademicoController extends Controller
 
         if($request){
             $sql=trim($request->get('buscarTexto'));
-            $personal=DB::table('users')
+
+            $jefe=Auth::user()->id;
+            $unidad=DB::table('unidadacademica')
+            ->select('unidadacademica.id')
+            ->where('unidadacademica.jefe','=',$jefe)->first(); 
+            $personal=DB::table('materias')
+            ->join('clases','clases.materia','=','materias.id')
+            ->join('users','users.id','=','clases.user')
             ->join('roles','users.rol','=','roles.id')
             ->select('users.id','users.nombre','users.apellido','users.codsis','users.ci','users.email','roles.rol')
+            ->where('materias.unidad',$unidad->id)
             ->where('users.nombre','like','%'.$sql.'%')
-            ->where('users.rol','=',3)
-            ->orwhere('users.rol','=',4)
-            ->orwhere('users.rol','=',5)                      
-            ->paginate(10);
-
+            // ->orWhere('roles.rol','like','%'.$sql.'%')
+            ->groupBy('users.id','users.nombre','users.apellido','users.codsis','users.ci','users.email','roles.rol')
+            ->paginate(15);
 
            return view('PersonalAcademico.index',['usuarios'=>$personal,'buscarTexto'=>$sql]);
-        // return $personal;
         }
         
     }
@@ -121,6 +127,12 @@ class PersonalAcademicoController extends Controller
             $asistencias;
 
             if(!$fechaini||!$fechafin){
+
+                $jefe=Auth::user()->id;
+                $unidad=DB::table('unidadacademica')
+                ->select('unidadacademica.id')
+                ->where('unidadacademica.jefe','=',$jefe)->first();
+
                 global $asistencias;
                 // $sql=trim($request->get('buscarTexto'));
                 $asistencias=DB::table('asistencias')
@@ -130,7 +142,7 @@ class PersonalAcademicoController extends Controller
             ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
             ->select('asistencias.id','asistencias.contenido','asistencias.plataforma',
             'asistencias.herramientas','asistencias.fecharepo','asistencias.fecha','asistencias.link',
-            'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion',
+            'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion','asistencias.archivos',
             'horas.dia','horas.hora','materias.nombre','materias.grupo','unidadacademica.facultad',
             'unidadacademica.nombre as unidad','materias.id as idmateria')
             // ->orwhereBetween('asistencias.fecha', [$fechaini, $fechafin])
@@ -142,6 +154,7 @@ class PersonalAcademicoController extends Controller
             // })
             // ->where('materias.nombre','LIKE','%'.$sql.'%')
             // ->orwhere('asistencias.tipoclase','LIKE','%'.$sql.'%')
+            ->where('materias.unidad','=',$unidad->id)
             ->where('asistencias.usuario','=',$id)
             // ->where(function($query){
             //          global $id,$sql;
@@ -164,9 +177,10 @@ class PersonalAcademicoController extends Controller
             ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
             ->select('asistencias.id','asistencias.contenido','asistencias.plataforma',
             'asistencias.herramientas','asistencias.fecharepo','asistencias.fecha','asistencias.link',
-            'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion',
+            'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion','asistencias.archivos',
             'horas.dia','horas.hora','materias.nombre','materias.grupo','unidadacademica.facultad',
             'unidadacademica.nombre as unidad','materias.id as idmateria')
+            ->where('materias.unidad','=',$unidad->id)
             ->where('asistencias.usuario','=',$id)
             ->whereBetween('asistencias.fecha', [$fechaini, $fechafin])
             // ->orwhere('ma terias.nombre','LIKE','%'.$sql.'%')

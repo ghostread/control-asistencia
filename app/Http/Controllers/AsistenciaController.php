@@ -21,46 +21,37 @@ class AsistenciaController extends Controller
         }
     public function index(Request $request)
     {
-        
+        // ROLES
+        // Administrador=1
+        // Autoridad=2
+        // Docente=3
+        // Auxiliar Docencia=4
+        // Auxiliar Laboratorio=5
 
         if($request){
 
             $userId=Auth::user()->id;
  
             $sql=trim($request->get('buscarTexto'));
-            
-            
-            
 
-            
-            // $hera=$asistencias->first()->herramientas;
-            // $herra=json_decode($hera,true);
-            
-
-             /*listar los materias en ventana modal*/
-            //  $horarios;
-
-            //Si el usuario es Auxiliar de docencia
+            //Si el usuario es Auxiliar de docencia que es  igual al rol 4
              if(Auth::user()->rol==4){
 
+                //Consulta realizada a la base de datos para obtener las asistencias del rol 4
                 $asistencias=DB::table('asistencias')
                     ->join('horas','asistencias.hora','=','horas.id')
                     ->join('materias','horas.materia','=','materias.id')
-                    // ->join('clases','materias.id','=','clases.materia')
                     ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
                     ->select('asistencias.id','asistencias.contenido','asistencias.plataforma',
-                    'asistencias.herramientas','asistencias.fecharepo','asistencias.fecha','asistencias.link','horas.dia',
-                    'asistencias.tipoclase','asistencias.created_at','horas.hora','asistencias.observacion','asistencias.archivos',
+                    'asistencias.herramientas','asistencias.fecharepo','asistencias.link','horas.dia',
+                    'asistencias.tipoclase','asistencias.created_at','horas.hora','asistencias.observacion','asistencias.archivos','asistencias.fecha',
                     'materias.nombre','materias.grupo','unidadacademica.facultad',
                     'unidadacademica.nombre as unidad','materias.id as idmateria')
                     ->where('asistencias.usuario','=',$userId)
-                    // ->where('horas.tipo','=','aux')
                     ->where('materias.nombre','LIKE','%'.$sql.'%')
-        //            ->where('materias.nombre','LIKE','%'.$sql.'%')
-                    // ->orwhere('users.codsis','LIKE','%'.$sql.'%')
                     ->orderBy('asistencias.id','desc')
                     ->paginate(15);
-
+                //Consulta para obtener los hoarios del rol 4
                 $horarios=DB::table('horas')
                 ->join('materias','horas.materia','=','materias.id')
                 ->join('clases','materias.id','=','clases.materia')
@@ -72,22 +63,18 @@ class AsistenciaController extends Controller
                 return view('asistencia.index',['materias'=>$horarios,'asistencias'=>$asistencias]);
         
              }else if(Auth::user()->rol==3){
-
+                //consulata para obetener las asistencias de los Docentes rol 3
                 $asistencias=DB::table('asistencias')
                     ->join('horas','asistencias.hora','=','horas.id')
                     ->join('materias','horas.materia','=','materias.id')
-                    // ->join('clases','materias.id','=','clases.materia')
                     ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
                     ->select('asistencias.id','asistencias.contenido','asistencias.plataforma',
-                    'asistencias.herramientas','asistencias.fecharepo','asistencias.fecha','asistencias.link','horas.dia',
+                    'asistencias.herramientas','asistencias.fecha','asistencias.fecharepo','asistencias.link','horas.dia',
                     'asistencias.tipoclase','asistencias.created_at','horas.hora','asistencias.observacion','asistencias.archivos',
                     'materias.nombre','materias.grupo','unidadacademica.facultad',
                     'unidadacademica.nombre as unidad','materias.id as idmateria')
                     ->where('asistencias.usuario','=',$userId)
-                    // ->where('horas.tipo','=','docent')
                     ->where('materias.nombre','LIKE','%'.$sql.'%')
-        //            ->where('materias.nombre','LIKE','%'.$sql.'%')
-                    // ->orwhere('users.codsis','LIKE','%'.$sql.'%')
                     ->orderBy('asistencias.id','desc')
                     ->paginate(15);
 
@@ -106,19 +93,20 @@ class AsistenciaController extends Controller
         
              }
             
-
+            //Rol 2 = Autoridad 
             if(Auth::user()->rol==2){
              $sql=trim($request->get('buscarTexto'));
              $fechainicio=trim($request->get('fechainicio'));
              $fechafin=trim($request->get('fechafin'));
              
                 $asistencias;
+                //Si se pasa el filtro de fecha inicio y fecha fin
                 if($fechainicio&&$fechafin){
+                    
+                    // Consulata de asistencias para la vista de la atoridad academica
                     $asistencias=DB::table('asistencias')
                     ->join('horas','asistencias.hora','=','horas.id')
                     ->join('materias','horas.materia','=','materias.id')
-                    
-                    // ->join('clases','materias.id','=','clases.materia')
                     ->join('users','asistencias.usuario','=','users.id')
                     ->join('roles','users.rol','=','roles.id')
                     ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
@@ -127,21 +115,17 @@ class AsistenciaController extends Controller
                     'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion','asistencias.archivos',
                     'materias.nombre as materia','materias.grupo','unidadacademica.facultad','horas.dia',
                     'unidadacademica.nombre as unidad','materias.id as idmateria','users.nombre','users.apellido','users.codsis','roles.rol')
-                    // ->where('clases.user','=',$userId)
-                    // ->where('materias.nombre','LIKE','%'.$sql.'%')
+                     ->where('unidadacademica.jefe','=',$userId)
                     ->whereBetween('asistencias.fecha', [$fechainicio, $fechafin])
-                    // ->groupBy('asistencias.id','users.nombre')
-                    ->orderBy('asistencias.id','desc')
+                    ->orderBy('asistencias.fecha','desc')
                     ->paginate(15);
 
 
-
+                //Cuando no se para el filtro de fechas
                 }else{
                     $asistencias=DB::table('asistencias')
                     ->join('horas','asistencias.hora','=','horas.id')
                     ->join('materias','horas.materia','=','materias.id')
-                    
-                    // ->join('clases','materias.id','=','clases.materia')
                     ->join('users','asistencias.usuario','=','users.id')
                     ->join('roles','users.rol','=','roles.id')
                     ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
@@ -150,13 +134,9 @@ class AsistenciaController extends Controller
                     'asistencias.tipoclase','asistencias.created_at','asistencias.hora','asistencias.observacion','asistencias.archivos',
                     'materias.nombre as materia','materias.grupo','unidadacademica.facultad','horas.dia',
                     'unidadacademica.nombre as unidad','materias.id as idmateria','users.nombre','users.apellido','users.codsis','roles.rol')
-                    // ->where('clases.user','=',$userId)
-                
-                    // ->groupBy('asistencias.id','users.nombre')
-                    ->orderBy('asistencias.id','desc')
+                    ->where('unidadacademica.jefe','=',$userId)
+                    ->orderBy('asistencias.fecha','desc')
                     ->paginate(15);
-
-                    
                 }
                    $contador=0;
                    foreach($asistencias as $asi){
@@ -166,21 +146,10 @@ class AsistenciaController extends Controller
                    }
                 
                 return view('asistencia.index',['asistencias'=>$asistencias,'fechainicio'=>$fechainicio,'fechafin'=>$fechafin,'contador'=>$contador]);
-                    // return $contador;
-                    //  return $asistencias;
+
             }
-            
-            // $herramientasString="hola mundo<br>casa<br>Saludos<br>hola mundo<br>casa<br>Saludos<br>";
-            // return view('User.index',["usuarios"=>$usuarios,"horarios"=>$horarios,"buscarTexto"=>$sql]);
 
-           
-            // return $asistencias;
         }
-
-        // return $request->all();
-        // $herramientas=['Google Docs','Google spreadshet','Google Meet','Zoom','Exel Microsof','Dashboar Google','Pisarra zoom'];
-        // $materia=['Fisica','Quimica','Biologia','Calculo'];
-        // return view('asistencia.index',['materias'=>$materia,'herramientas'=>$herramientas]);
     }
 
     /**
@@ -357,70 +326,55 @@ class AsistenciaController extends Controller
 
         $fechaini=($request->get('fechainicio'));
         $fechafin=($request->get('fechafin'));
-        $reporte;
-
-        // if($fechaini&&$fechafin){
-        //      $reporte=DB::table('clases')
-        //     ->join('users','clases.user','=','users.id')
-        //     ->join('materias','clases.materia','=','materias.id')
-        //     ->join('horas','horas.materia','=','materias.id')
-        //     ->join('asistencias','asistencias.hora','=','horas.id')
-        //     ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
-        //     ->select('users.nombre','users.apellido',
-        //     'materias.id as IDmateria','materias.nombre as materia',
-            
-        //     'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.id) as totalregistro') 
-        //     )
-        //     ->groupBy('users.nombre','users.apellido','materias.id','materias.nombre',
-        //     'unidadacademica.facultad','unidadacademica.nombre')
-        //     ->whereBetween('asistencias.fecha', [$fechaini, $fechafin])->get();
-        // }else{
+        $userId=Auth::user()->id;
+       
            if($fechaini&&$fechafin){
 
-            // $totalhorarios=DB::table('horas')
-            // ->join('materias','horas.materia','=','materias.id')
-            // ->select('materias.nombre',DB::raw('count(horas.id) as totalhorarios'))
-            // ->groupBy('materias.nombre')->get();
+            $fecha1=Carbon::parse($fechaini);
+            $fecha2=Carbon::parse($fechafin);
+            $datediff=$fecha1->diffInWeeks($fecha2);
 
             $reporte=DB::table('asistencias')
             ->join('users','asistencias.usuario','=','users.id')
-            // ->join('materias','clases.materia','=','materias.id')
             ->join('horas','asistencias.hora','=','horas.id')
             ->join('materias','materias.id','=','horas.materia')
             ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
             ->select('users.nombre','users.apellido',
-            'materias.id as IDmateria','materias.nombre as materia',
+            'materias.grupo','materias.nombre as materia',
             
-            'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.usuario) as totalregistro'),DB::raw('count(asistencias.usuario)*2 as cargahoraria')
+            'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.id) as totalregistro'),DB::raw('count(asistencias.id)*2 as cargahoraria'),DB::raw('count(asistencias.fecharepo) as totalrepo')
             )
-            
+            ->where('unidadacademica.jefe','=',$userId)
             ->whereBetween('asistencias.fecha', [$fechaini, $fechafin])
-            ->groupBy('users.nombre','users.apellido','materias.id','materias.nombre',
-            'unidadacademica.facultad','unidadacademica.nombre')->get();
-            
 
+            ->groupBy('users.nombre','users.apellido','materias.grupo','materias.nombre',
+            'unidadacademica.facultad','unidadacademica.nombre')->get();
+
+            return \PDF::loadView('pdf.reporte',['asistencias'=>$reporte,'fechainicio'=>$fechaini,'fechafin'=>$fechafin,'semanas'=>$datediff])->setPaper('A4')->stream('control_asistencia.pdf');
            }else{
+
+            $totalhorarios=DB::table('horas')
+            ->join('asistencias','asistencias.hora','=','horas.id')
+            ->select('horas.materia',DB::raw('count(horas.materia) as totalhoras'))
+            ->whereBetween('asistencias.fecha', [$fechaini, $fechafin])
+            ->groupBy('horas.materia')->get();
+
             $reporte=DB::table('asistencias')
             ->join('users','asistencias.usuario','=','users.id')
             ->join('horas','asistencias.hora','=','horas.id')
             ->join('materias','materias.id','=','horas.materia')
-            // ->join('materias','clases.materia','=','materias.id')
             ->join('unidadacademica','materias.unidad','=','unidadacademica.id')
             ->select('users.nombre','users.apellido',
-            'materias.id as IDmateria','materias.nombre as materia',
+            'materias.id as IDmateria','materias.nombre as materia','materias.grupo',
             
-            'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.usuario) as totalregistro'),DB::raw('count(asistencias.usuario)*2 as cargahoraria')
+            'unidadacademica.facultad','unidadacademica.nombre as unidad',DB::raw('count(asistencias.usuario) as totalregistro'),DB::raw('count(asistencias.usuario)*2 as cargahoraria'),DB::raw('count(asistencias.fecharepo) as totalrepo')
             )
-            // ->whereBetween('asistencias.fecha', [$fechaini, $fechafin])
+            ->where('unidadacademica.jefe','=',$userId)
             ->groupBy('users.nombre','users.apellido','materias.id','materias.nombre',
-            'unidadacademica.facultad','unidadacademica.nombre')->get();
+            'unidadacademica.facultad','unidadacademica.nombre','materias.grupo')->get();
+
+            return \PDF::loadView('pdf.reporte',['asistencias'=>$reporte,'fechainicio'=>$fechaini,'fechafin'=>$fechafin,'semanas'=>NULL])->setPaper('A4')->stream('control_asistencia.pdf');
            }
-        // }
-        
-        // ->where('horas.id',')->get();
-        // return view('pdf.reporte',['asistencias'=>$reporte]);
-        return \PDF::loadView('pdf.reporte',['asistencias'=>$reporte,'fechainicio'=>$fechaini,'fechafin'=>$fechafin])->setPaper('A4')->stream('control_asistencia.pdf');
-        // return $reporte;
     }
     public function auxiliar(Request $request){
           
