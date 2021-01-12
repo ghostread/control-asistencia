@@ -66,6 +66,7 @@
                                         <th>Facultad</th>
                                         <th WIDTH="55">Herramientas</th>
                                         <th>Archivo</th>
+                                        <th>Eliminar</th>
                                         {{-- "google doc<br>google meet" --}}
                                         
                                     </tr>
@@ -92,7 +93,13 @@
                                         <td class="align-middle">{{$asistencia->facultad}}</td>
                                         <td class="align-middle w-10">{!!$asistencia->herramientas!!}</td>
                                         <td class="align-middle"><a target="blank" href="{{asset('/storage/archivos/'.$asistencia->archivos)}}"> {!! !empty($asistencia->archivos) ? '<i class="fas fa-file-alt"></i>' : '' !!}</a></td>
-                                        
+                                        <td class="text-center">
+                                            <form action="{{route('asistencias.destroy',$asistencia->id)}}" method="post">
+                                               {{csrf_field()}}
+                                               {{method_field('delete')}}
+                                               <button type="submit" class="btn btn-outline-danger btn-circle"><i class="fa fa-trash"></i></button>
+                                           </form>
+                                   </td>
                                     </tr>
 
                                     @endforeach

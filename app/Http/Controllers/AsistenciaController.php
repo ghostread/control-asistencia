@@ -350,7 +350,8 @@ class AsistenciaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Asistencia::findOrFail($id)->delete();
+        return Redirect::to('asistencias');
     }
     public function generarReportePdf(Request $request){
 
